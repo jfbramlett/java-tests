@@ -47,16 +47,16 @@ public abstract class Digest {
 
   public byte[] digest(byte[]input) {
       byte[] result = cache.get(input);
-      if (result==null) {
+      if (result == null) {
         synchronized(cache) {
           result=cache.get(input);
-          if (result==null) {
+          if (result == null) {
             try{
               result = doDigest(input);
               cache.put(input,result);
             } catch(RuntimeException ex) {
               LoggerFactory.getLogger("Digest").error("Unable to make digest");
-              throwex;
+              throw ex;
             }
           }
         }
