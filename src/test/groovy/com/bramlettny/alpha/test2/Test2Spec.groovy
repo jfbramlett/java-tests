@@ -12,5 +12,7 @@ class Test2Spec extends Specification {
         input           | sum   | found
         [1, 2, 3, 4]    | 7     | true
         [5, 6, 7, 8]    | 33    | false
+        [1, 2, 3, 4]    | 5     | true
+        [5, 1, 4, 6]    | 10    | true
     }
 }

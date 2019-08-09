@@ -48,7 +48,6 @@ public class Test1 {
             longest = tmp.toString();
         }
 
-        System.out.println("Longest string: " + longest);
         return longest.length();
     }
 }
