@@ -27,6 +27,8 @@ public class Test2 {
      *  doesn't feel worth it given the overall simplicity of the solution - that would be more important for larger
      *  datasets but for smaller ones it isn't worth the cost.
      *
+     *  Storage requirements would be 2xn where n is the size of the input list.
+     *
      * @param input The set of values we are checking against
      * @param targetSum The target sum we are looking for
      * @return boolean Returns true if we find a continuous subarray whose sum is equal to our target, false otherwise
@@ -50,9 +52,13 @@ public class Test2 {
      * Determines if there is a continuous subarray whose sum is equal to the specified target sum.
      *
      * Complexity:
-     * I believe the complexity of this would be considered O, it requires a single loop over the primary input.
-     * It does have a process where we access part of the main array as we "remove" values from a running total
-     * but I don't think that work changes the big-O value.
+     * I believe the complexity of this would be considered O as there is basically only a single trip through
+     * the list. To manage the "find" of the sum it keeps a running total and once over the threshold it
+     * subtracts values (earliest values removed first) until it falls back under the threshold. This subtraction
+     * bit I don't think changes the complexity, while it does this in a loop it isn't a full loop for each
+     * outer step (and not every outer loop results in an inner loop).
+     *
+     * This approach requires no additional storage.
      *
      * @param input The set of values we are checking against
      * @param targetSum The target sum we are looking for

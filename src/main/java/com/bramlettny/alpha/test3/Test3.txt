@@ -1,0 +1,53 @@
+-- missing package declaration
+
+import java.util.HashMap;
+import java.util.Map;
+import org.slf4j.LoggerFactory;
+
+-- class comment would be nice to give a little detail on what Digest means.
+public abstract class Digest {
+  -- Map key shouldn't be something like a byte[] (or really any array), it should ideally be a
+  -- single object/value that can (or does) implement hashCode and equals.
+  -- If you have a clue of the size, it is recommended to create with an initial capacity
+  private Map<byte[],byte[]> cache = new HashMap<byte[],byte[]>();
+
+  -- might be nice to define a constructor, even a default one
+
+  -- javadoc comment is helpful describing the method + inputs/outputs
+  -- while not required, either throwing a typed exception or at least defining that this
+  -- method throws an exception would be a good idea to document to the caller the fact
+  -- that an exception can be thrown
+  public byte[] digest(byte[] input) {
+      -- see note above about using byte[] as a key
+      -- HashMap's allow for null values and there is no requirement that doDigest return a non-null
+      -- value so it might be best to do a containsKey and if so then do the get and value (be it null
+      -- or non-null). Otherwise we might constantly fall in to the doDigest call
+      byte[] result = cache.get(input);
+      if (result == null) {
+        synchronized(cache) {
+          -- same note here about null values vs absence of a value from above
+          result = cache.get(input);
+          if (result == null) {
+            try {
+              result = doDigest(input);
+              -- can result be null? And if so is that an acceptable value?
+              cache.put(input,result);
+            } catch(RuntimeException ex) {
+              -- logger should be defined as a static variable of the class
+              -- logger of error should probably include the error as well
+              -- you can also get a logger from the class which might be better than
+              -- defining your own name
+              LoggerFactory.getLogger("Digest").error("Unable to make digest");
+              -- while open for debate generally just rethrowing a caught exception
+              -- and doing nothing isn't great.
+              throw ex;
+            }
+          }
+        }
+      }
+    return result;
+  }
+
+  -- ideally this would define the exceptions thrown even if they are runtime
+  protected abstract byte[] doDigest(byte[] input);
+}

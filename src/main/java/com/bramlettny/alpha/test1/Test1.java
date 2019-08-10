@@ -30,6 +30,10 @@ public class Test1 {
      * @return int The length of the longest substring without repeating characters
      */
     public static int findLongestSubstring(String input) {
+        if (input == null) {
+            return 0;
+        }
+
         String longest = "";
         StringBuilder tmp = new StringBuilder();
 

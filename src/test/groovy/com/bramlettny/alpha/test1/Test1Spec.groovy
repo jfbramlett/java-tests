@@ -12,5 +12,8 @@ class Test1Spec extends Specification {
         "abcabcbb"  | 3
         "bbbbb"     | 1
         "pwwkew"    | 3
+        "abcdef"    | 6
+        "abccdef"   | 4
+        ""          | 0
     }
 }

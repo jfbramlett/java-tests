@@ -45,13 +45,13 @@ import org.slf4j.LoggerFactory;
 public abstract class Digest {
   private Map<byte[],byte[]> cache = new HashMap<byte[],byte[]>();
 
-  public byte[] digest(byte[]input) {
+  public byte[] digest(byte[] input) {
       byte[] result = cache.get(input);
       if (result == null) {
         synchronized(cache) {
-          result=cache.get(input);
+          result = cache.get(input);
           if (result == null) {
-            try{
+            try {
               result = doDigest(input);
               cache.put(input,result);
             } catch(RuntimeException ex) {
