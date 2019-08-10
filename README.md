@@ -4,14 +4,14 @@
 
 ## 1. Coding task 1. Longest substring without repeating characters.
 
-Details can be found [here](src/main/java/com/bramlettny/alpha/test1/README.md)
+Details can be found [here](src/main/java/com/bramlettny/alpha/test1)
   
 
 ## 2. Coding task 2. Find subarray with given sum.
    
-Details can be found [here](src/main/java/com/bramlettny/alpha/test2/README.md)
+Details can be found [here](src/main/java/com/bramlettny/alpha/test2)
 
 
 ## 3. Java: List all issues you can findin the following class:
 
-Details can be found [here](src/main/java/com/bramlettny/alpha/test3/README.md)
+Details can be found [here](src/main/java/com/bramlettny/alpha/test3)
