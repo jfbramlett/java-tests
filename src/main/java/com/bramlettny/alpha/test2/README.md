@@ -13,3 +13,7 @@ Explanation: Sum of subarray [3,4] is 7
 ### Running
 
 There is no main to run this, instead there are test cases defined [here](../../../../../../test/groovy/com/bramlettny/alpha/test2/Test2Spec.groovy)
+
+I did two implementations, one uses multiple loops so less efficient though I would say
+it is probably the cleaner implementation. The second does this substraction process as it 
+loops so more efficient but more complex/less readable.
