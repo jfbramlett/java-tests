@@ -15,3 +15,7 @@ Details can be found [here](src/main/java/com/bramlettny/alpha/test2)
 ## 3. Java: List all issues you can findin the following class:
 
 Details can be found [here](src/main/java/com/bramlettny/alpha/test3)
+
+## 4. Java: Reverse an integer
+
+Details can be found [here](src/main/java/com/bramlettny/alpha/test4)
